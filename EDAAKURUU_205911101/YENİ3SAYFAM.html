@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.SAYFAM</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function()
+    {
+
+var data = JSON.parse(localStorage.getItem("rows1")) || [];
+
+var td1=localStorage.getItem("Namee");
+var td2=localStorage.getItem("Surname");
+var td3=localStorage.getItem("Number");
+var td4=localStorage.getItem("Pickupdate");
+var td5=localStorage.getItem("Returndate");
+var td6=localStorage.getItem("Vehicletype");
+
+if(td1!=null){
+var newrows1 = {"namaee":td1, "surnamea":td2, "numbaer":td3, "pickaupdate":td4, "returndaate":td5, "vehiacletype":td6};
+data[data.length]=newrows1;
+
+
+ var html = '<table class="table">';
+ html += '<tr>';
+ for( var j in data[0] ) {
+  html += '<th>' + j + '</th>';
+ }
+ html += '</tr>';
+ for( var i = 0; i < data.length; i++) {
+  html += '<tr>';
+  for( var j in data[i] ) {
+    html += '<td>' + data[i][j] + '</td>';
+  }
+  html += '</tr>';
+ }
+ html += '</table>';
+ document.getElementById('container').innerHTML = html;
+ }
+
+localStorage.setItem("rows1",JSON.stringify(data));
+localStorage.setItem("Namee",null);
+localStorage.setItem("Surname",null);
+localStorage.setItem("Number",null);
+localStorage.setItem("Pickupdate",null);
+localStorage.setItem("Returndate",null);
+localStorage.setItem("Vehicletype",null);
+
+});
+</script>
+</head>
+<body>
+    <div class="filter">
+    </div>
+     <div style="margin:250px;" class="table-box" id="container">
+ </div>
+    <a href="YeniSayfam.html"></a>
+</body>
+</html>
